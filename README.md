@@ -1,18 +1,22 @@
 # css-dupe-finder
 
-Finds duplicate declarations within valid CSS code blocks.
+A script that finds duplicate declarations within valid CSS code blocks.
 
 ### Live Demo
 
-See example of highlighted CSS [here](https://cgabriel5.github.io/css-dupe-finder/).
+See demo [here](https://cgabriel5.github.io/css-dupe-finder/). Code blocks containing duplicate declarations are outputted in the console.
+
+### How It Works
+
+CSS Dupe Finder will analyze the provided CSS and return the code blocks containing duplicate declarations.
 
 ### How To Use
 
-Take a look at `js/app.js`, `js/css_dupe_finder.js`, and `index.html` to see how it's used.
+Take a look at `js/app.js`, `js/css_dupe_finder.js`, and `index.html` to see how it's used. 
 
 ### Issues
 
-* Very longs strings can take time to parse. 
+* Extremely long strings may take time to parse. 
 
 ### Contributing
 
