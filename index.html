@@ -3,35 +3,38 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- {http://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do} -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="css/styles.css" rel="stylesheet">
     <!-- nice google fonts: raleway, work sans, open sans, lato, oxygen -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"> -->
     <script src="js/app.js"></script>
     <title>CSS Dupe Finder</title>
 </head>
 
 <body>
-    <textarea id="textarea">
-        .class1 {
-            color: red;
-            background: #000;
-            padding: 10px;
-            font-weight: bold;
-            color: blue;
-        }
-        .class2 {
-            padding: 10px;
-            font-weight: bold;
-            color: blue;
-        }
-        .class3 {
-            color: red;
-            background: #000;
-            padding: 10px;
-            font-weight: bold;
-            padding: 2px;
-        }
+    Open the console to view the code blocks that contain duplicate CSS declarations. :)
+    <textarea id="textarea" class="textarea1">
+.class1 {
+    color: red;
+    background: #000;
+    padding: 10px;
+    font-weight: bold;
+    color: blue;
+}
+.class2 {
+    padding: 10px;
+    font-weight: bold;
+    color: blue;
+}
+.class3 {
+    color: red;
+    background: #000;
+    padding: 10px;
+    font-weight: bold;
+    padding: 2px;
+}
     </textarea>
 </body>
 
