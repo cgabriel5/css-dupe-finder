@@ -1,0 +1,46 @@
+<div class="message"><span class="bold">Left</span> textarea contains the original CSS.
+    <br> <span class="bold">Right</span> textarea contains duplicate CSS declarations.
+    <br> <span class="bold">Add</span> your CSS to the left textarea to check for duplicate CSS declarations.</div>
+<div class="textarea-cont">
+    <textarea id="textarea1" class="textarea">
+.class1 {
+    color: red;
+    background: #000;
+    padding: 10px;
+    font-weight: bold;
+    color: blue;
+}
+.class2 {
+    padding: 10px;
+    font-weight: bold;
+    color: blue;
+}
+.class3 {
+    color: red;
+    background: #000;
+    padding: 10px;
+    font-weight: bold;
+    padding: 2px;
+}
+@media screen and (max-width: 500px) {
+    .head-cont {
+        padding: 25px 0;
+        padding: 55px 0;
+    }
+    .head-cont-center {
+        width: 300px;
+    }
+    @media screen and (max-width: 300px) {
+        .head-cont {
+            padding: 50px 0;
+            padding: 60px 0;
+        }
+        .head-cont-center {
+            width: 300px;
+            width: 400px;
+        }
+    }
+}
+    </textarea>
+    <textarea id="textarea2" class="textarea"></textarea>
+</div>

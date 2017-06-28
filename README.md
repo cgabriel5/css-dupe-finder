@@ -12,7 +12,7 @@ CSS Dupe Finder will analyze the provided CSS and return the code blocks contain
 
 ### How To Use
 
-Take a look at `js/app.js`, `js/css_dupe_finder.js`, and `index.html` to see how it's used. 
+Take a look at `js/app.js`, `js/source/test.js`, `lib/lib.js`, and `index.html` to see how it's used. 
 
 ### Issues
 
