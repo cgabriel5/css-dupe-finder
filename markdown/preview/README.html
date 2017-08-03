@@ -13,23 +13,77 @@
 <body>
     <article class="markdown-body"><h1 id="css-dupe-finder">css-dupe-finder</h1>
 <p>A script that finds duplicate declarations within valid CSS code blocks.</p>
-<h3 id="live-demo">Live Demo</h3>
+<h5 id="table-of-contents">Table of Contents</h5>
+<ul class="list">
+<li><a href="#project-setup">Project Setup</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#usage">Usage</a><ul class="list">
+<li><a href="#usage-general-example">Step By Step</a></li>
+</ul>
+</li>
+<li><a href="#issues">Issues</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<p><a name="project-setup"></a></p>
+<h3 id="project-setup">Project Setup</h3>
+<p>Project uses <a href="https://github.com/cgabriel5/snippets/tree/master/boilerplate/application">this</a> boilerplate. Its <a href="https://github.com/cgabriel5/snippets/blob/master/boilerplate/application/README.md#-read-before-use">README.md</a> contains instructions for <code>Yarn</code> and <code>Gulp</code>.</p>
+<p><a name="demo"></a></p>
+<h3 id="demo">Demo</h3>
 <p>See demo <a href="https://cgabriel5.github.io/css-dupe-finder/">here</a>. Code blocks containing duplicate declarations are outputted in the console.</p>
 <h3 id="how-it-works">How It Works</h3>
 <p>CSS Dupe Finder will analyze the provided CSS and return the code blocks containing duplicate declarations.</p>
-<h3 id="how-to-use">How To Use</h3>
-<p>Take a look at <code>js/app.js</code>, <code>js/source/test.js</code>, <code>lib/lib.js</code>, and <code>index.html</code> to see how it&#39;s used. </p>
+<p><a name="usage"></a></p>
+<h3 id="usage">Usage</h3>
+<p><strong>Note</strong>: The library, both minimized and unminimized, is located in <code>lib/</code>.</p>
+<p>Take a look at <code>js/app.js</code>, <code>js/source/test.js</code>, <code>lib/lib.js</code>, and <code>index.html</code> to see how the demo is made. </p>
+<p><a name="usage-general-example"></a>
+<strong>Step By Step</strong> &mdash; General usage.</p>
+<p><strong>Step 1</strong>: Get String To Parse</p>
+<pre class="hljs"><code><span class="hljs-comment">// Get string either from the DOM (i.e. text value from textarea, input...etc) </span>
+<span class="hljs-comment">// or from server via an Ajax request.</span>
+
+<span class="hljs-keyword">var</span> myString = <span class="hljs-string">".red-text { color: red; display: block; color: green; }"</span>;</code></pre><p><strong>Step 2</strong>: Create Web Worker</p>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> worker = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">"path/to/lib.js"</span>);</code></pre><p><strong>Step 3</strong>: Listen To Web Worker</p>
+<pre class="hljs"><code>worker.addEventListener(<span class="hljs-string">"message"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+
+    <span class="hljs-comment">// cache the data object</span>
+    <span class="hljs-keyword">var</span> message = e.data;
+
+    <span class="hljs-comment">// once finished parsing string</span>
+    <span class="hljs-keyword">if</span> (message.action === <span class="hljs-string">"done"</span>) {
+
+        <span class="hljs-comment">// cache highlighted CSS string</span>
+        <span class="hljs-keyword">var</span> highlighted = message.highlighted;
+
+        <span class="hljs-comment">// do something with highlighted string...</span>
+        <span class="hljs-comment">// (i.e. inject into an HTMLElement)</span>
+
+        <span class="hljs-comment">// finally, close the worker</span>
+        worker.postMessage({ <span class="hljs-string">"action"</span>: <span class="hljs-string">"stop"</span> }); 
+
+    }
+
+}, <span class="hljs-literal">false</span>);</code></pre><p><strong>Step 4</strong>: Send Data To Web Worker</p>
+<pre class="hljs"><code>worker.postMessage({
+    <span class="hljs-string">"action"</span>: <span class="hljs-string">"start"</span>, <span class="hljs-comment">// required (tell worker to start &amp; parse)</span>
+    <span class="hljs-string">"string"</span>: myString <span class="hljs-comment">// required (string to parse &amp; highlight)</span>
+});</code></pre><p><a name="issues"></a></p>
 <h3 id="issues">Issues</h3>
 <ul class="list">
 <li>Extremely long strings may take time to parse. </li>
 </ul>
+<p><a name="contributing"></a></p>
 <h3 id="contributing">Contributing</h3>
 <p>Contributions are welcome! Found a bug, feel like documentation is lacking/confusing and needs an update, have performance/feature suggestions or simply found a typo? Let me know! :)</p>
 <p>See how to contribute <a href="https://github.com/cgabriel5/css-dupe-finder/blob/master/CONTRIBUTING.md">here</a>.</p>
+<p><a name="todo"></a></p>
 <h3 id="todo">TODO</h3>
 <ul class="list">
 <li>[ ] Re-write for better performance.</li>
 </ul>
+<p><a name="license"></a></p>
 <h3 id="license">License</h3>
 <p>This project uses the <a href="https://github.com/cgabriel5/css-dupe-finder/blob/master/LICENSE.txt">MIT License</a>.</p>
     </article>
